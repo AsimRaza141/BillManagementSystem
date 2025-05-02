@@ -1,0 +1,63 @@
+﻿@model Electricity_Bill.Models.RegisterViewModel
+@{
+    ViewData["Title"] = "Register";
+}
+
+<!-- Font Awesome CDN for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <!-- Registration Form -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center">
+            <div class="register-form">
+                <h2 class="register-title">@ViewData["Title"]</h2>
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success">@TempData["SuccessMessage"]</div>
+                }
+                @if (TempData["Error"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["Error"]</div>
+                }
+                @if (TempData["ModelStateErrors"] != null)
+                {
+                    <div class="alert alert-danger">@TempData["ModelStateErrors"]</div>
+                }
+
+                <form asp-action="Register" method="post">
+                    <div class="form-group">
+                        <label asp-for="FirstName"><i class="fas fa-user" style="color: blue;"></i> First Name</label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LastName"><i class="fas fa-user" style="color: blue;"></i> Last Name</label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email"><i class="fas fa-envelope" style="color: blue;"></i> Email</label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password"><i class="fas fa-lock" style="color: blue;"></i> Password</label>
+                        <input asp-for="Password" class="form-control" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword"><i class="fas fa-lock" style="color: blue;"></i> Confirm Password</label>
+                        <input asp-for="ConfirmPassword" class="form-control" type="password" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-success">Register</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Background Image -->
+        <div class="col-md-6 background-image"></div>
+    </div>
+</div>

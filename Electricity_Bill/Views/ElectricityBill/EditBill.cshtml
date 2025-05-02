@@ -1,0 +1,30 @@
+﻿@model Electricity_Bill.Models.BillCalculationViewModel
+
+<h2 style="text-align: center; color: blue; font-weight: bold;">Edit Bill</h2>
+
+<form asp-action="EditBill" method="post" style="display: flex; flex-wrap: wrap; justify-content: space-around; align-items: flex-end;">
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group" style="flex: 1; margin-right: 10px;">
+        <label asp-for="PreviousReading">Previous Reading</label>
+        <input asp-for="PreviousReading" class="form-control" required />
+    </div>
+    <div class="form-group" style="flex: 1; margin-right: 10px;">
+        <label asp-for="CurrentReading">Current Reading</label>
+        <input asp-for="CurrentReading" class="form-control" required />
+    </div>
+    <div class="form-group" style="flex: 0.5; margin-right: 10px;">
+        <label asp-for="Month">Month</label>
+        <input asp-for="Month" class="form-control" type="number" min="1" max="12" required />
+    </div>
+    <div class="form-group" style="flex: 0.5; margin-right: 10px;">
+        <label asp-for="Year">Year</label>
+        <input asp-for="Year" class="form-control" type="number" min="2000" max="2100" required />
+    </div>
+    <div class="form-group" style="flex: 1; margin-right: 10px;">
+        <label asp-for="SelectedReferenceNumber">Reference Number</label>
+        <input asp-for="SelectedReferenceNumber" class="form-control" required />
+    </div>
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
+        <button type="submit" class="btn btn-success" style="padding: 6px 12px; font-size: 14px;">Save Changes</button>
+    </div>
+</form>

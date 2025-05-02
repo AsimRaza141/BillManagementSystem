@@ -1,0 +1,33 @@
+﻿@model Electricity_Bill.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Electricity Bill</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="form-container" style="position: fixed; left: 50%; top: 50%; transform: translate(-50%, -50%); max-width: 1000px; padding: 30px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.15);">
+        <h2 class="form-title" style="color: #007bff; font-weight: bold; font-size: 28px; text-align: center; margin-bottom: 30px;">@ViewData["Title"]</h2>
+        <form asp-controller="ElectricityBill" asp-action="Login" method="post">
+            <div class="form-group" style="position: relative; margin-bottom: 30px;">
+                <label for="Email" style="display: block; margin-bottom: 10px;">Email</label>
+                <i class="fas fa-envelope" style="position: absolute; left: 15px; top: 50%; transform: translateY(30%); color: blue;"></i>
+                <input type="email" id="Email" name="Email" class="form-control" required style="height: 60px; padding-left: 50px; font-size: 18px; border: 2px solid darkgrey; width: 100%;">
+            </div>
+            <div class="form-group" style="position: relative; margin-bottom: 30px;">
+                <label for="Password" style="display: block; margin-bottom: 10px;">Password</label>
+                <i class="fas fa-lock" style="position: absolute; left: 15px; top: 50%; transform: translateY(30%); color: blue;"></i>
+                <input type="password" id="Password" name="Password" class="form-control" required style="height: 60px; padding-left: 50px; font-size: 18px; border: 2px solid darkgrey; width: 100%;">
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 40%; padding: 10px; font-size: 16px; margin: 0 auto; display: block;">Login</button>
+        </form>
+    </div>
+</body>
+</html>

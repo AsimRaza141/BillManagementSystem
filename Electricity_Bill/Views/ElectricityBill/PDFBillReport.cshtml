@@ -1,0 +1,40 @@
+﻿@model Electricity_Bill.Models.BillCalculationViewModel
+
+<h2 style="text-align: center; color: blue; font-weight: bold;">Bill Report from @Model.StartDate.ToShortDateString() to @Model.EndDate.ToShortDateString()</h2>
+
+@if (Model.Bills != null && Model.Bills.Any())
+{
+    <table class="table" style="width: 100%; border-collapse: collapse; margin: auto; table-layout: fixed;">
+        <thead>
+            <tr style="background-color: #f8f9fa;">
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Date & Time</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Reference Number</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Site</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Previous Reading</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Current Reading</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Net Reading</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Month</th>
+                <th style="border: 1px solid black; padding: 8px; text-align: center;">Year</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var bill in Model.Bills)
+            {
+                <tr>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.Date.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.ReferenceNumber</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.SiteName</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.PreviousReading</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.CurrentReading</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.NetReading</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.Month</td>
+                    <td style="border: 1px solid black; padding: 8px; text-align: center;">@bill.Year</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p style="text-align: center;">No bills found within the specified range.</p>
+}

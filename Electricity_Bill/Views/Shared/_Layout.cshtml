@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Electricity_Bill</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Electricity_Bill.styles.css" asp-append-version="true" />
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet"> <!-- Google Font -->
+    <!-- Custom Styles for Hover Effects and Font Styling -->
+    <style>
+        body, h1, h2, h3, h4, h5, h6, .navbar-brand, .nav-link {
+            font-family: 'Poppins', sans-serif; /* Applying Poppins font */
+        }
+
+        .navbar-brand {
+            color: brown !important;
+            font-weight: bold; /* Bold font for navbar brand */
+            transition: color 0.3s ease-in-out;
+        }
+
+            .navbar-brand:hover {
+                color: darkred !important;
+            }
+
+        .nav-link {
+            color: blue !important;
+            font-weight: bold; /* Bold font for navigation links */
+            transition: color 0.3s ease-in-out;
+        }
+
+            .nav-link:hover {
+                color: navy !important;
+            }
+
+        nav {
+            background-color: aqua !important; /* Aqua background for the navbar */
+            border-color: #e3e6f0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="ElectricityBill" asp-action="Index">
+                    Bill Management System
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="ElectricityBill" asp-action="Register">
+                                Sign Up
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="ElectricityBill" asp-action="Login">
+                                Login
+                            </a>
+                        </li>
+                    </ul>
+                    @if (User?.Identity?.IsAuthenticated == true)
+                    {
+                        <div style="position: absolute; right: 10px; top: 10px;">
+                            <form asp-controller="ElectricityBill" asp-action="Logout" method="post">
+                                <button type="submit" class="btn btn-danger" style="padding: 5px 10px; font-size: 14px;">Logout</button>
+                            </form>
+                        </div>
+                    }
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

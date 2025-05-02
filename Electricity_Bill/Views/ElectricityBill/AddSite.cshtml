@@ -1,0 +1,79 @@
+﻿@model Electricity_Bill.Models.Site
+
+@{
+    ViewData["Title"] = "Add Site(s) & Reference Number(s)";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 style="text-align: center; color: #007bff; font-weight: bold;">Add Site and Reference Number</h2>
+
+<!-- Form for adding a site and reference numbers -->
+<form asp-action="AddSite" method="post" id="siteForm" style="display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+    <div id="siteInputGroup" class="form-group" style="margin-right: 35px; width: 30%;">
+        <label asp-for="SiteName" class="control-label">Site Name(s)</label>
+        <input asp-for="SiteName" class="form-control" name="SiteName" required />
+        <span asp-validation-for="SiteName" class="text-danger"></span>
+    </div>
+
+    <div id="referenceInputGroup" class="form-group" style="width: 30%; margin-right: 25px;">
+        <label class="control-label">Reference Number(s)</label>
+        <input type="text" name="ReferenceNumbers[]" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="height: 38px; margin-top: 32px;">Submit</button>
+</form>
+
+<!-- Table for Displaying Added Sites and Reference Numbers -->
+@if (ViewBag.Sites != null && ViewBag.ReferenceNumbers != null)
+{
+    var sitesList = ViewBag.Sites as List<Electricity_Bill.Models.Site>;
+    var referenceNumbersDictionary = ViewBag.ReferenceNumbers as Dictionary<int, List<string>>;
+
+    if (sitesList != null)
+    {
+        <table class="table" style="background-color: #f8f9fa; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+            <thead style="background-color: #e9ecef;">
+                <tr>
+                    <th>Site Name</th>
+                    <th>Reference Number</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var site in sitesList)
+                {
+                    if (site != null)
+                    {
+                        List<string> referenceNumbers = referenceNumbersDictionary != null && referenceNumbersDictionary.ContainsKey(site.Id)
+                        ? referenceNumbersDictionary[site.Id]
+                        : new List<string>();
+
+                        if (referenceNumbers.Any())
+                        {
+                            <tr>
+                                <td rowspan="@referenceNumbers.Count">@site.SiteName</td>
+                                <td>@referenceNumbers.First()</td>
+                            </tr>
+                            foreach (var refNumber in referenceNumbers.Skip(1))
+                            {
+                                <tr>
+                                    <td>@refNumber</td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@site.SiteName</td>
+                                <td>No reference numbers</td>
+                            </tr>
+                        }
+                    }
+                }
+            </tbody>
+        </table>
+    }
+}
+
+<div class="text-right mt-3">
+    <a href="@Url.Action("CalculateForm", "ElectricityBill")" class="btn btn-success">Next</a>
+</div>

@@ -1,0 +1,16 @@
+﻿@model List<Electricity_Bill.Models.Site>
+
+@{
+    ViewData["Title"] = "Select Site";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<ul>
+    @foreach (var site in Model)
+    {
+        <li>
+            <a asp-action="ViewSite" asp-route-id="@site.Id">@site.SiteName</a>
+        </li>
+    }
+</ul>

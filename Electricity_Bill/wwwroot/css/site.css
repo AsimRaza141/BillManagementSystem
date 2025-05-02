@@ -1,0 +1,87 @@
+html {
+    font-size: 14px;
+    position: relative;
+    min-height: 100%;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+/* Background image for the register page on the right */
+.background-image {
+    background: url('/css/Register.jpg') no-repeat center center;
+    background-size: cover; /* Cover the entire container */
+    height: 70vh; /* Adjusted to match the form height */
+    width: 50%; /* Adjusted width */
+}
+
+/* Style adjustments for the registration form */
+.register-form {
+    padding: 60px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    width: 80%; /* Adjust based on your preference */
+    max-width: 600px; /* Increase or adjust as necessary */
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-5%);
+}}
+
+/* Input field adjustments */
+input.form-control {
+    height: 40px; /* Maintain the existing height */
+    font-size: 16px; /* Maintain the existing font size */
+    color: blue; /* Keep the text color blue */
+    border: 4px solid #333 !important; /* Increase border thickness and set to dark grey */
+    width: 100%; /* Maintain full width */
+    max-width: 500px; /* Maintain maximum width */
+    transition: border-color 0.3s; /* Smooth transition for border color change on focus */
+}
+
+
+    input.form-control:focus {
+        border-color: #007bff; /* Highlight color when focused */
+    }
+
+/* Centralizing the title and styling */
+.register-title {
+    text-align: center;
+    color: #007bff;
+    margin-bottom: 20px;
+    font-size: 32px; /* Increased font size for the title */
+    font-weight: bold;
+    transition: transform 0.3s ease-in-out; /* Adding animation on load */
+}
+
+/* Custom hover effects for buttons */
+button.btn {
+    font-size: 16px; /* Reduced font size */
+    padding: 8px 16px; /* Reduced padding */
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+    button.btn:hover {
+        background-color: #0056b3;
+        transform: scale(1.1);
+    }
+
+/* Additional styles */
+.form-group {
+    margin-top: 20px;
+}
+
+.alert {
+    margin-top: 20px;
+}

@@ -1,0 +1,24 @@
+﻿@model ReferenceNum
+
+@{
+    ViewData["Title"] = "Verify Reference Number";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<form asp-action="VerifyReference" method="post">
+    <div class="form-group">
+        <label asp-for="ReferenceNumber">Reference Number</label>
+        <input asp-for="ReferenceNumber" class="form-control" />
+        <span asp-validation-for="ReferenceNumber" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Verify</button>
+</form>
+
+@if (!string.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+{
+    <div class="alert alert-danger">
+        @ViewData["ErrorMessage"]
+    </div>
+}
+ 
